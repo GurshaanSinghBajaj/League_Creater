@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.user_windowController">
+   <children>
+      <Label fx:id="user_label" alignment="CENTER" layoutX="246.0" layoutY="14.0" prefHeight="20.0" prefWidth="209.0" text="Welcome Text">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TableView fx:id="League_Table" layoutX="23.0" layoutY="131.0" prefHeight="199.0" prefWidth="659.0">
+        <columns>
+            <TableColumn fx:id="League_ID" prefWidth="79.0" text="Id" />
+          	<TableColumn fx:id="League_Name" prefWidth="158.0" text="Name" />
+          	<TableColumn fx:id="Organizer" minWidth="0.0" prefWidth="107.0" text="Organizer" />
+            <TableColumn fx:id="Sponsor" prefWidth="108.0" text="Sponsor" />
+            <TableColumn fx:id="Start_Date" prefWidth="104.0" text="Starting Date" />
+            <TableColumn fx:id="Prize_Money" prefWidth="102.0" text="Prize Money" />
+        </columns>
+      </TableView>
+      <Label fx:id="user_text" alignment="CENTER" layoutX="110.0" layoutY="70.0" prefHeight="35.0" prefWidth="480.0" text="Following are the Leagues Organized by you.">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="enter_id" layoutX="36.0" layoutY="369.0" promptText="Enter League ID" />
+      <TextField fx:id="enter_name" layoutX="193.0" layoutY="369.0" promptText="Enter League Name" />
+      <TextField fx:id="enter_organiser" layoutX="354.0" layoutY="369.0" promptText="Enter League Organizer" />
+      <TextField fx:id="enter_sponsor" layoutX="516.0" layoutY="369.0" promptText="Enter League Sponsor" />
+      <TextField fx:id="enter_start" layoutX="111.0" layoutY="411.0" promptText="Enter Starting Date" />
+      <TextField fx:id="enter_prize" layoutX="429.0" layoutY="411.0" promptText="Enter Prize Money" />
+      <Button fx:id="add_button" layoutX="160.0" layoutY="458.0" mnemonicParsing="false" onAction="#insertLeague" text="Add League" />
+      <Button fx:id="delete_button" layoutX="478.0" layoutY="458.0" mnemonicParsing="false" onAction="#DeleteLeague" text="Delete League" />
+      <Button fx:id="team_button" layoutX="110.0" layoutY="539.0" mnemonicParsing="false" text="Teams" />
+      <Button fx:id="players_button" layoutX="328.0" layoutY="539.0" mnemonicParsing="false" text="Players" />
+      <Button fx:id="fixture_button" layoutX="530.0" layoutY="539.0" mnemonicParsing="false" text="Fixtures" />
+   </children>
+</AnchorPane>

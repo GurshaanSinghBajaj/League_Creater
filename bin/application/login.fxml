@@ -18,7 +18,7 @@
       </Label>
       <ImageView fx:id="imageview" fitHeight="90.0" fitWidth="150.0" layoutX="28.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Pictures/1_17.png" />
+            <Image url="@../../1_17.png" />
          </image></ImageView>
       <TextField fx:id="username_field" layoutX="108.0" layoutY="119.0" prefHeight="39.0" prefWidth="258.0" promptText="USERNAME" />
       <PasswordField fx:id="password_field" layoutX="108.0" layoutY="166.0" prefHeight="39.0" prefWidth="258.0" promptText="PASSWORD" />
