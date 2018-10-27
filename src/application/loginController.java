@@ -1,8 +1,6 @@
 package application;
 
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,8 +17,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 public class loginController implements Initializable{
-	public loginModel loginmodel = new loginModel();
 	
+	public loginModel loginmodel = new loginModel();
 	@FXML
 	private Label isConnected;
 	@FXML
@@ -31,8 +29,6 @@ public class loginController implements Initializable{
 	private TextField password_field;
 	@FXML
 	private Button login_button;
-	@FXML
-	private ImageView imageview;
 	
 	@FXML
 	public void Login (ActionEvent event) {
@@ -64,7 +60,7 @@ public class loginController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		if(loginmodel.isDbConnected()) {
-			isConnected.setText("LEAGUE CREATER");
+			isConnected.setText("LEAGUE MANAGER");
 		}
 		else
 			isConnected.setText("Not Connected");

@@ -72,7 +72,7 @@ public class user_windowController2 implements Initializable {
     @FXML
     private void searchLeague() throws SQLException, ClassNotFoundException {
         try {
-        	if(enter_teamid.getText()==null) {
+        	if(league_id.getText()!=null) {
         		ObservableList<team_details> Team_List = team_model.search_team(league_id.getText(),x);
         		Team_Table.setItems(Team_List);
         	}

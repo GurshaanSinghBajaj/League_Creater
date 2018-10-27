@@ -22,9 +22,8 @@ public class team_model {
 	}
 	
 	public static ObservableList<team_details> team_table (String user) throws SQLException, ClassNotFoundException {
-		
-		Connection connection=SqliteConnection.connector()
-;		PreparedStatement prepared = null;
+		Connection connection=SqliteConnection.connector();
+		PreparedStatement prepared = null;
         ResultSet rsemps = null;
         String query = "SELECT Team_Id, Team_name,Team_coach,Team_owner FROM Teams where username = ?";
         try {
@@ -94,13 +93,23 @@ public class team_model {
 			System.out.println("SQL select operation has been failed: " + e);
             throw e;
 		}
+		String QUERY = "Delete from Team_league where Team_Id = ?";
+		try {
+			prepared = connection.prepareStatement(QUERY);
+			prepared.setString(1,teamid);
+			prepared.executeUpdate();
+		} catch(SQLException e) {
+			System.out.println("SQL select operation has been failed: " + e);
+            throw e;
+		}
 	}
 	
 	public static ObservableList<team_details> search_team(String League_id, String user) throws SQLException, ClassNotFoundException {
 		Connection connection=SqliteConnection.connector();
 		PreparedStatement prepared = null;
 		ResultSet rsemps = null;
-		String query = "Select Team_Id, Team_name,Team_coach,Team_owner FROM Teams Natural Inner Join Team_league where League_Id = ? and username = ?";
+		System.out.println("Search Team");
+		String query = "Select Teams.Team_Id, Team_name,Team_coach,Team_owner FROM Teams Inner Join Team_league on Teams.Team_Id = Team_league.Team_Id where League_Id = ? and username = ?";
 		try {
 			prepared = connection.prepareStatement(query);
 			prepared.setString(1,League_id);
