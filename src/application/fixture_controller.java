@@ -18,10 +18,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import application.team_details;
-import application.team_model;
+import application.fixture_detail;
+import application.fixture_model;
 
-public class user_windowController2 implements Initializable {
+public class fixture_controller implements Initializable {
 	
 	String x;
 
@@ -30,23 +30,31 @@ public class user_windowController2 implements Initializable {
 	@FXML
 	private Label user_text;
 	@FXML
-    private TableView<team_details> Team_Table;
+    private TableView<fixture_detail> Fixture_Table;
     @FXML
-    private TableColumn<team_details, String>  Team_ID;
+    private TableColumn<fixture_detail, String>  fixture_ID;
     @FXML
-    private TableColumn<team_details, String>  Team_Name;
+    private TableColumn<fixture_detail, String>  hometeam;
     @FXML
-    private TableColumn<team_details, String> Team_coach;
+    private TableColumn<fixture_detail, String> awayteam;
     @FXML
-    private TableColumn<team_details, String> Team_owner;
+    private TableColumn<fixture_detail, String> date;
     @FXML
-    private TextField enter_teamid;
+    private TableColumn<fixture_detail, String> time;
     @FXML
-    private TextField enter_teamname;
+    private TableColumn<fixture_detail, String> venue;
     @FXML
-    private TextField enter_teamcoach;
+    private TextField enter_fixtureid;
     @FXML
-    private TextField enter_teamowner;
+    private TextField enter_hometeam;
+    @FXML
+    private TextField enter_awayteam;
+    @FXML
+    private TextField enter_date;
+    @FXML
+    private TextField enter_time;
+    @FXML
+    private TextField enter_venue;
     @FXML
     private Button add_button;
     @FXML
@@ -56,13 +64,13 @@ public class user_windowController2 implements Initializable {
     @FXML
     private Button search_button;
     @FXML
-    private Button team_mainmenu;
+    private Button fixture_mainmenu; 
     
     @FXML
     private void search() throws SQLException, ClassNotFoundException {
         try {
-            ObservableList<team_details> Team_List = team_model.team_table(x);
-            Team_Table.setItems(Team_List);
+            ObservableList<fixture_detail> Fixture_List = fixture_model.fixture_table(x);
+            Fixture_Table.setItems(Fixture_List);
         } catch (SQLException e){
             System.out.println("Error occurred while getting employees information from DB.\n" + e);
             throw e;
@@ -73,11 +81,16 @@ public class user_windowController2 implements Initializable {
     private void searchLeague() throws SQLException, ClassNotFoundException {
         try {
         	String check = league_id.getText();
-        	if(check.length() > 0) {
-        		ObservableList<team_details> Team_List = team_model.search_team(league_id.getText(),x);
-        		Team_Table.setItems(Team_List);
+        	if(check.length()>0) {
+        		System.out.println("calling");
+        		ObservableList<fixture_detail> Fixture_List = fixture_model.search_fixture(league_id.getText(),x);
+        		Fixture_Table.setItems(Fixture_List);
         	}
-        	else search();
+        	else 
+        	{
+        		System.out.println("Calling Search");
+        		search();
+        	}
         } catch (SQLException e){
             System.out.println("Error occurred while getting employees information from DB.\n" + e);
             throw e;
@@ -85,10 +98,10 @@ public class user_windowController2 implements Initializable {
     }
     
     @FXML
-    private void insertTeam (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    private void insertFixture(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
     	try {
-    		team_model.insertteam(enter_teamid.getText(),enter_teamname.getText(),enter_teamcoach.getText(),
-				enter_teamowner.getText(),x,league_id.getText());
+    		fixture_model.insertfixture(enter_fixtureid.getText(),enter_hometeam.getText(),enter_awayteam.getText(),
+				enter_date.getText(),enter_time.getText(),enter_venue.getText(),league_id.getText(),x);
     	} catch (SQLException e){
             System.out.println("Error occurred while getting employees information from DB.\n" + e);
             throw e;
@@ -102,9 +115,9 @@ public class user_windowController2 implements Initializable {
     }
     
     @FXML
-    private void DeleteTeam (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    private void DeleteFixture(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
     	try {
-    		team_model.deleteteam(enter_teamid.getText(),x);
+    		fixture_model.deletefixture(enter_fixtureid.getText(),x);
     	} catch (SQLException e){
             System.out.println("Error occurred while getting employees information from DB.\n" + e);
             throw e;
@@ -133,11 +146,11 @@ public class user_windowController2 implements Initializable {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		Stage stage = (Stage) team_mainmenu.getScene().getWindow();
+		Stage stage = (Stage) fixture_mainmenu.getScene().getWindow();
 	    stage.close();
     }
-	
-	public void GetUser(String user) {
+    
+    public void GetUser(String user) {
 		user_label.setText("Hello " + user);
 		x=user;
 		try {
@@ -146,15 +159,14 @@ public class user_windowController2 implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	    Team_ID.setCellValueFactory(cellData -> cellData.getValue().team_idProperty());
-        Team_Name.setCellValueFactory(cellData -> cellData.getValue().team_nameProperty());
-        Team_coach.setCellValueFactory(cellData -> cellData.getValue().coach_nameProperty());
-        Team_owner.setCellValueFactory(cellData -> cellData.getValue().team_ownerProperty());
+	    fixture_ID.setCellValueFactory(cellData -> cellData.getValue().fixture_idProperty());
+        hometeam.setCellValueFactory(cellData -> cellData.getValue().home_teamProperty());
+        awayteam.setCellValueFactory(cellData -> cellData.getValue().away_teamProperty());
+        date.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+        time.setCellValueFactory(cellData -> cellData.getValue().timeProperty());
+        venue.setCellValueFactory(cellData -> cellData.getValue().venueProperty());
 	}
-
 }
-

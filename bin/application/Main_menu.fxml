@@ -14,8 +14,8 @@
       </Label>
       <Button fx:id="league_button" layoutX="82.0" layoutY="122.0" mnemonicParsing="false" onAction="#league" text="LEAGUES" />
       <Button fx:id="team_button" layoutX="355.0" layoutY="122.0" mnemonicParsing="false" onAction="#team" text="TEAMS" />
-      <Button fx:id="player_button" layoutX="83.0" layoutY="179.0" mnemonicParsing="false" text="PLAYERS" />
-      <Button fx:id="fixture_button" layoutX="349.0" layoutY="179.0" mnemonicParsing="false" text="FIXTURES" />
+      <Button fx:id="player_button" layoutX="83.0" layoutY="179.0" mnemonicParsing="false" onAction="#player" text="PLAYERS" />
+      <Button fx:id="fixture_button" layoutX="349.0" layoutY="179.0" mnemonicParsing="false" onAction="#fixture" text="FIXTURES" />
       <Button fx:id="logout_button" layoutX="217.0" layoutY="241.0" mnemonicParsing="false" onAction="#logout" text="LOG OUT" />
       <Label fx:id="main_menu_label" layoutX="194.0" layoutY="66.0" text="MAIN MENU">
          <font>

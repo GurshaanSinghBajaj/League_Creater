@@ -18,10 +18,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import application.team_details;
-import application.team_model;
+import application.player_details;
+import application.player_model;
 
-public class user_windowController2 implements Initializable {
+public class player_Controller implements Initializable {
 	
 	String x;
 
@@ -30,39 +30,43 @@ public class user_windowController2 implements Initializable {
 	@FXML
 	private Label user_text;
 	@FXML
-    private TableView<team_details> Team_Table;
+    private TableView<player_details> Player_Table;
     @FXML
-    private TableColumn<team_details, String>  Team_ID;
+    private TableColumn<player_details, String>  Player_ID;
     @FXML
-    private TableColumn<team_details, String>  Team_Name;
+    private TableColumn<player_details, String>  Player_Name;
     @FXML
-    private TableColumn<team_details, String> Team_coach;
+    private TableColumn<player_details, String> Date_Of_Birth;
     @FXML
-    private TableColumn<team_details, String> Team_owner;
+    private TableColumn<player_details, String> City;
     @FXML
-    private TextField enter_teamid;
+    private TableColumn<player_details, String> Role;
     @FXML
-    private TextField enter_teamname;
+    private TextField enter_playerid;
     @FXML
-    private TextField enter_teamcoach;
+    private TextField enter_playername;
     @FXML
-    private TextField enter_teamowner;
+    private TextField enter_dateofbirth;
+    @FXML
+    private TextField enter_city;
+    @FXML
+    private TextField enter_role;
     @FXML
     private Button add_button;
     @FXML
     private Button delete_button;
     @FXML
-    private TextField league_id;
+    private TextField team_id;
     @FXML
     private Button search_button;
     @FXML
-    private Button team_mainmenu;
+    private Button player_mainmenu;
     
     @FXML
     private void search() throws SQLException, ClassNotFoundException {
         try {
-            ObservableList<team_details> Team_List = team_model.team_table(x);
-            Team_Table.setItems(Team_List);
+            ObservableList<player_details> Player_List = player_model.player_table(x);
+            Player_Table.setItems(Player_List);
         } catch (SQLException e){
             System.out.println("Error occurred while getting employees information from DB.\n" + e);
             throw e;
@@ -70,12 +74,12 @@ public class user_windowController2 implements Initializable {
     }
     
     @FXML
-    private void searchLeague() throws SQLException, ClassNotFoundException {
+    private void searchTeam() throws SQLException, ClassNotFoundException {
         try {
-        	String check = league_id.getText();
+        	String check = team_id.getText();
         	if(check.length() > 0) {
-        		ObservableList<team_details> Team_List = team_model.search_team(league_id.getText(),x);
-        		Team_Table.setItems(Team_List);
+        		ObservableList<player_details> Player_List = player_model.search_player(team_id.getText(),x);
+        		Player_Table.setItems(Player_List);
         	}
         	else search();
         } catch (SQLException e){
@@ -85,10 +89,10 @@ public class user_windowController2 implements Initializable {
     }
     
     @FXML
-    private void insertTeam (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    private void insertPlayer (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
     	try {
-    		team_model.insertteam(enter_teamid.getText(),enter_teamname.getText(),enter_teamcoach.getText(),
-				enter_teamowner.getText(),x,league_id.getText());
+    		player_model.insertplayer(enter_playerid.getText(),enter_playername.getText(),enter_dateofbirth.getText(),
+				enter_city.getText(),enter_role.getText(),x,team_id.getText());
     	} catch (SQLException e){
             System.out.println("Error occurred while getting employees information from DB.\n" + e);
             throw e;
@@ -102,9 +106,9 @@ public class user_windowController2 implements Initializable {
     }
     
     @FXML
-    private void DeleteTeam (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    private void DeletePlayer (ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
     	try {
-    		team_model.deleteteam(enter_teamid.getText(),x);
+    		player_model.deleteplayer(enter_playerid.getText(),x);
     	} catch (SQLException e){
             System.out.println("Error occurred while getting employees information from DB.\n" + e);
             throw e;
@@ -133,7 +137,7 @@ public class user_windowController2 implements Initializable {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		Stage stage = (Stage) team_mainmenu.getScene().getWindow();
+		Stage stage = (Stage) player_mainmenu.getScene().getWindow();
 	    stage.close();
     }
 	
@@ -150,10 +154,11 @@ public class user_windowController2 implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	    Team_ID.setCellValueFactory(cellData -> cellData.getValue().team_idProperty());
-        Team_Name.setCellValueFactory(cellData -> cellData.getValue().team_nameProperty());
-        Team_coach.setCellValueFactory(cellData -> cellData.getValue().coach_nameProperty());
-        Team_owner.setCellValueFactory(cellData -> cellData.getValue().team_ownerProperty());
+	    Player_ID.setCellValueFactory(cellData -> cellData.getValue().player_idProperty());
+        Player_Name.setCellValueFactory(cellData -> cellData.getValue().player_nameProperty());
+        Date_Of_Birth.setCellValueFactory(cellData -> cellData.getValue().date_of_birthProperty());
+        City.setCellValueFactory(cellData -> cellData.getValue().cityProperty());
+        Role.setCellValueFactory(cellData -> cellData.getValue().roleProperty());
 	}
 
 }

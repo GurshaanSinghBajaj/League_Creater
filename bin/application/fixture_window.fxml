@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.fixture_controller">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="700.0">
+         <children>
+            <Label fx:id="user_label" alignment="CENTER" layoutX="246.0" layoutY="14.0" prefHeight="20.0" prefWidth="209.0" text="Welcome Text">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TableView fx:id="Fixture_Table" layoutX="23.0" layoutY="131.0" prefHeight="199.0" prefWidth="659.0">
+              <columns>
+                  <TableColumn fx:id="fixture_ID" prefWidth="150.0" text="Fixture Id" />
+                  <TableColumn fx:id="hometeam" prefWidth="150.0" text="Home Team" />
+                  <TableColumn fx:id="awayteam" prefWidth="150.0" text="Away Team" />
+                  <TableColumn fx:id="date" prefWidth="70.0" text="Date" />
+                  <TableColumn fx:id="time" prefWidth="69.0" text="Time" />
+                  <TableColumn fx:id="venue" prefWidth="70.0" text="Venue" />
+              </columns>
+            </TableView>
+            <Label fx:id="user_text" alignment="CENTER" layoutX="9.0" layoutY="70.0" prefHeight="35.0" prefWidth="685.0" text="Following are the match fixtures in the league administered by you.">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <TextField fx:id="enter_fixtureid" layoutX="14.0" layoutY="369.0" promptText="Enter Fixture ID" />
+            <TextField fx:id="enter_hometeam" layoutX="189.0" layoutY="369.0" promptText="Enter Home Team" />
+            <TextField fx:id="enter_awayteam" layoutX="365.0" layoutY="369.0" promptText="Enter Away Team" />
+            <TextField fx:id="enter_date" layoutX="537.0" layoutY="369.0" promptText="Enter Date" />
+            <TextField fx:id="enter_time" layoutX="463.0" layoutY="414.0" promptText="Enter Time" />
+            <TextField fx:id="enter_venue" layoutX="89.0" layoutY="414.0" promptText="Enter Venue" />
+            <Button fx:id="add_button" layoutX="154.0" layoutY="477.0" mnemonicParsing="false" onAction="#insertFixture" text="Add Fixture" />
+            <Button fx:id="delete_button" layoutX="514.0" layoutY="477.0" mnemonicParsing="false" onAction="#DeleteFixture" text="Delete Fixture" />
+            <Button fx:id="search_button" layoutX="340.0" layoutY="477.0" mnemonicParsing="false" onAction="#searchLeague" text="Search" />
+            <Button fx:id="fixture_mainmenu" layoutX="327.0" layoutY="545.0" mnemonicParsing="false" onAction="#backtomenu" text="Main Menu" />
+            <TextField fx:id="league_id" layoutX="277.0" layoutY="414.0" promptText="Enter League ID" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

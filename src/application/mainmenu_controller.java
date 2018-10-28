@@ -78,43 +78,43 @@ public class mainmenu_controller implements Initializable{
 	    stage.close();
 	}
 	
-	/*public void league(ActionEvent event) {
+	public void fixture(ActionEvent event) {
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
 		Pane root = null;
 		try {
-			root = loader.load(getClass().getResource("/application/user_window.fxml").openStream());
+			root = loader.load(getClass().getResource("/application/fixture_window.fxml").openStream());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		user_windowController userController = (user_windowController)loader.getController();
+		fixture_controller userController = (fixture_controller)loader.getController();
 		userController.GetUser(x);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		Stage stage = (Stage) league_button.getScene().getWindow();
+		Stage stage = (Stage) fixture_button.getScene().getWindow();
 	    stage.close();
 	}
 	
-	public void league(ActionEvent event) {
+	public void player(ActionEvent event) {
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
 		Pane root = null;
 		try {
-			root = loader.load(getClass().getResource("/application/user_window.fxml").openStream());
+			root = loader.load(getClass().getResource("/application/player_window.fxml").openStream());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		user_windowController userController = (user_windowController)loader.getController();
+		player_Controller userController = (player_Controller)loader.getController();
 		userController.GetUser(x);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		Stage stage = (Stage) league_button.getScene().getWindow();
+		Stage stage = (Stage) player_button.getScene().getWindow();
 	    stage.close();
-	}*/
+	}
 	
 	@FXML
 	public void logout(ActionEvent event) throws IOException {
